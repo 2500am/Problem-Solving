@@ -9,16 +9,16 @@
         ios::sync_with_stdio(0) ;
         cin.tie(0); cout.tie(0) ;
 
-        int N, res = 0 ;
+        long long N, res = 0 ;
         cin >> N ;
 
 
-        vector<int> dist_v ;
-        vector<int> cost_v ;
+        vector<long long> dist_v ;
+        vector<long long> cost_v ;
 
         for (int i = 0; i < N-1; i++)
         {
-            int dist ;
+            long long dist ;
             cin >> dist ;
             dist_v.push_back(dist) ;
 
@@ -26,21 +26,28 @@
 
         for (int i = 0; i < N; i++)
         {
-            int cost ;
+            long long cost ;
             cin >> cost ;
-            cost_v.push_back(cost) ; 
+            
+            if(i == N-1) continue;
+            else cost_v.push_back(cost) ;
             
         }
 
-
-        int fin_point ;
-
-
         while(cost_v.size()) 
         {
-            int idx = min_element(cost_v.begin(), cost_v.end()-1) - cost_v.begin() ;
+            long long idx = min_element(cost_v.begin(), cost_v.end()) - cost_v.begin() ;
             // cout << "idx 값 : " << idx << '\n' ; 
-            int dist_sum = 0 ;
+            long long dist_sum = 0 ;
+
+
+            // cout << "cost_v 상태 : " ;
+            // for (int i = 0; i < cost_v.size(); i++)
+            // {
+                
+            //     cout << cost_v[i] << " " ;   
+            // }
+            
 
             for (int i = idx; i < dist_v.size(); i++)
             {
