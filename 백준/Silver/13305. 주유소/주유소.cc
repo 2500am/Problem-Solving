@@ -12,7 +12,6 @@
         long long N, res = 0 ;
         cin >> N ;
 
-
         vector<long long> dist_v ;
         vector<long long> cost_v ;
 
@@ -34,43 +33,23 @@
             
         }
 
-        while(cost_v.size()) 
+
+        int min_cost = cost_v[0] ;
+        res += min_cost * dist_v[0] ;
+
+        for (int i = 1; i < N-1; i++)
         {
-            long long idx = min_element(cost_v.begin(), cost_v.end()) - cost_v.begin() ;
-            // cout << "idx 값 : " << idx << '\n' ; 
-            long long dist_sum = 0 ;
-
-
-            // cout << "cost_v 상태 : " ;
-            // for (int i = 0; i < cost_v.size(); i++)
-            // {
-                
-            //     cout << cost_v[i] << " " ;   
-            // }
-            
-
-            for (int i = idx; i < dist_v.size(); i++)
+            if(cost_v[i] < min_cost)
             {
-                dist_sum += dist_v[i] ;
-                // cout << "dist_sum 값 : " << dist_sum  << '\n' ; 
+                min_cost = cost_v[i] ;
+
             }
-            
-            res += dist_sum * cost_v[idx] ;
-            // cout << "res 값 : " << res << '\n'; 
 
+            res+=min_cost * dist_v[i] ;
 
-            cost_v.erase(cost_v.begin() + idx, cost_v.end()) ;
-            dist_v.erase(dist_v.begin() + idx, dist_v.end()) ;
-            
         }
-
-        cout << res ;
         
-
-
-
-
-
+        cout << res;
 
         return 0;
     }
